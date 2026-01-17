@@ -1,18 +1,20 @@
 const express = require("express");
-const router = express.Router();
 const Board = require("../models/Board");
+const { verifyToken } = require("../middleware/auth");
 
-// Create Board
-router.post("/", async (req, res) => {
+const router = express.Router();
+
+// Create board
+router.post("/", verifyToken, async (req, res) => {
   try {
-    const board = await Board.create(req.body);
+    const board = await Board.create({ ...req.body, user: req.userId });
     res.status(201).json(board);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Get All Boards
+// Get all boards
 router.get("/", async (req, res) => {
   try {
     const boards = await Board.find().populate("pins");
@@ -22,8 +24,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Delete Board
-router.delete("/:id", async (req, res) => {
+// Delete board
+router.delete("/:id", verifyToken, async (req, res) => {
   try {
     await Board.findByIdAndDelete(req.params.id);
     res.json({ message: "Board deleted" });

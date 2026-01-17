@@ -1,0 +1,24 @@
+.home-container {
+  padding: 20px;
+}
+
+.boards-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.board-card {
+  width: 200px;
+  min-height: 150px;
+  background: #F5F5DC;
+  border-radius: 10px;
+  padding: 10px;
+  color: #2E6F40;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.board-card:hover {
+  transform: scale(1.05);
+}

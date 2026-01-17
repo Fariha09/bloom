@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const PinSchema = new mongoose.Schema({
-    imageUrl: { type: String, required: true },
-    description: { type: String, trim: true },
-    board: { type: mongoose.Schema.Types.ObjectId, ref: "Board", required: true }
+const pinSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  imageUrl: { type: String, required: true },
+  board: { type: mongoose.Schema.Types.ObjectId, ref: "Board" }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Pin", PinSchema);
+module.exports = mongoose.model("Pin", pinSchema);
