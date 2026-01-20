@@ -88,3 +88,55 @@ body {
 .board:hover {
   transform: scale(1.05);
 }
+
+/* Auth Pages */
+.auth-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  background-color: #f5f1e6;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.auth-container h2 {
+  color: #2e6f40;
+  margin-bottom: 1.5rem;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container input {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.auth-container button {
+  padding: 0.8rem;
+  background-color: #2e6f40;
+  color: #f5f1e6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.auth-container button:hover {
+  opacity: 0.9;
+}
+
+.auth-container a {
+  color: #2e6f40;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}

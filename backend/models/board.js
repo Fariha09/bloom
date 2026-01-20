@@ -1,9 +1,20 @@
 const mongoose = require("mongoose");
 
 const boardSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  pins: [{ type: mongoose.Schema.Types.ObjectId, ref: "Pin" }]
-}, { timestamps: true });
+  title: {
+    type: String,
+    required: true,
+  },
+  images: [
+    {
+      imageUrl: String,
+      caption: String,
+    },
+  ],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+});
 
 module.exports = mongoose.model("Board", boardSchema);
