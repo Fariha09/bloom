@@ -13,6 +13,8 @@ function Homepage() {
         <div className="nav-links">
   <a href="/">Home</a>
   <a href="/boards">Boards</a>
+  <a href="/create-board">Create Board</a>
+
 
   {token ? (
     <a
