@@ -11,10 +11,24 @@ Bloom is a full-stack inspiration board web application inspired by Pinterest, b
 
 ## Tech Stack
 **Frontend:**  
-HTML, CSS, JavaScript, React, TypeScript  
+React
+
+JavaScript
+
+CSS (Custom Styling)
+
+React Router 
 
 **Backend:**  
-Node.js, Express, MongoDB  
+Node.js
+
+Express.js
+
+MongoDB
+
+Mongoose
+
+Multer (File Upload Handling) 
 
 ## Color Palette
 - Forest Green: #2E6F40  

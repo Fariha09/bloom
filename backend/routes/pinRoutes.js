@@ -1,6 +1,6 @@
 const express = require("express");
 const Pin = require("../models/Pin");
-const Board = require("../models/Board");
+const Board = require("../models/Boards");
 const { verifyToken } = require("../middleware/auth");
 
 const router = express.Router();
