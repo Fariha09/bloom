@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="banner png" src="https://github.com/user-attachments/assets/30de62b8-9f9f-4f83-9b79-8fb743542de1" />
 # 🌸 Bloom
 
 Bloom is a full-stack inspiration board web application inspired by Pinterest, built with a nature-themed design using Forest Green and Light Beige aesthetics.
