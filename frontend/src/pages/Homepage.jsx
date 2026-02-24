@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
-
 function Homepage() {
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+
+
+  // ✅ STATE MUST BE HERE
+  const [boards, setBoards] = useState([]);
+
+  // ✅ EFFECT MUST BE HERE
+  useEffect(() => {
+    fetch("http://localhost:5000/api/boards")
+      .then((res) => res.json())
+      .then((data) => setBoards(data))
+      .catch(console.error);
+  }, []);
 
   return (
     <div className="app">
@@ -11,30 +23,27 @@ function Homepage() {
       <nav className="navbar">
         <h1 className="logo">Bloom</h1>
         <div className="nav-links">
-  <a href="/">Home</a>
-  <a href="/boards">Boards</a>
-  <a href="/create-board">Create Board</a>
+          <Link to="/">Home</Link>
+          <Link to="/boards">Boards</Link>
+          <Link to="/create-board">Create Board</Link>
 
-
-  {token ? (
-    <a
-      href="/"
-      onClick={() => {
-        localStorage.removeItem("token");
-        alert("Logged out 🌿");
-      }}
-    >
-      Logout
-    </a>
-  ) : (
-    <>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-
-    </>
-  )}
-</div>
-
+          {token ? (
+            <a
+              href="/"
+              onClick={() => {
+                localStorage.removeItem("token");
+                alert("Logged out 🌿");
+              }}
+            >
+              Logout
+            </a>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )}
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -44,14 +53,33 @@ function Homepage() {
         <button className="cta-btn">Start Blooming</button>
       </section>
 
-      {/* Boards Grid */}
+      {/* Static Inspiration Boards */}
       <section className="boards">
-        <div className="board">🌸 Floral Aesthetic</div>
-        <div className="board">🌿 Nature Vibes</div>
-        <div className="board">📚 Study Inspo</div>
-        <div className="board">🏡 Cozy Homes</div>
-        <div className="board">🎨 Art & Design</div>
-        <div className="board">💚 Green Living</div>
+        <div className="board static">🌸 Floral Aesthetic</div>
+        <div className="board static">🌿 Nature Vibes</div>
+        <div className="board static">📚 Study Inspo</div>
+        <div className="board static">🏡 Cozy Homes</div>
+        <div className="board static">🎨 Art & Design</div>
+        <div className="board static">💚 Green Living</div>
+      </section>
+
+      {/* Dynamic Boards Preview */}
+      <section className="boards">
+        <h3 className="section-title">Your Boards 🌱</h3>
+
+        {boards.length === 0 ? (
+          <p>No boards yet 🌿</p>
+        ) : (
+          boards.map((board) => (
+            <Link
+              key={board._id}
+              to={`/boards/${board._id}`}
+              className="board"
+            >
+              {board.title}
+            </Link>
+          ))
+        )}
       </section>
     </div>
   );

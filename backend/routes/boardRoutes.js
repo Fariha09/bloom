@@ -43,8 +43,7 @@ router.post("/", upload.array("images"), async (req, res) => {
   }
 });
 
-// Serve uploaded images statically
-router.use("/uploads", express.static("uploads"));
+
 
 // Get all boards
 router.get("/", async (req, res) => {
@@ -55,5 +54,81 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// Get a specific board by ID 
+router.get("/:id", async (req, res) => {
+  try {
+    const board = await Board.findById(req.params.id);
+    res.json(board);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
+
+router.get("/:id/images", async (req, res) => {
+  try {
+    const board = await Board.findById(req.params.id);
+    res.json(board.images);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Add image via URL
+router.post("/:id/images", async (req, res) => {
+  try {
+    const board = await Board.findById(req.params.id);
+
+    board.images.push({
+      imageUrl: req.body.imageUrl,
+      caption: req.body.caption || "",
+    });
+
+    await board.save();
+    res.json(board);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
+// Upload image file to a board
+router.post("/:id/images/upload", upload.array("images"), async (req, res) => {
+  try {
+    console.log("Upload route hit");
+    console.log("FILES:", req.files);
+
+    const board = await Board.findById(req.params.id);
+    if (!board) {
+      return res.status(404).json({ message: "Board not found" });
+    }
+
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ message: "No files uploaded" });
+    }
+
+    req.files.forEach(file => {
+      board.images.push({
+        imageUrl: `http://localhost:5000/uploads/${file.filename}`,
+        caption: ""
+      });
+    });
+
+    await board.save();
+
+    res.json(board);
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
+
 
 module.exports = router;

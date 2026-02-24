@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Boards from "./pages/Boards";
 import CreateBoard from "./pages/CreateBoard";
+import BoardPage from "./pages/BoardPage";
+import BoardsList from "./pages/BoardsList";
 
 
 function App() {
@@ -15,7 +17,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/boards" element={<Boards />} />
+        <Route path="/boards" element={<BoardsList />} />
         <Route path="/create-board" element={<CreateBoard />} />
+        <Route path="/boards/:id" element={<BoardPage />} />
 
       </Routes>
     </Router>

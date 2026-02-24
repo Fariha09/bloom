@@ -16,11 +16,12 @@ function Boards() {
         <div key={board._id} className="board">
           <h3>{board.title}</h3>
 
-          <div className="image-grid">
+
+         /* <div className="image-grid">
             {board.images.map((img, i) => (
               <img key={i} src={img.imageUrl} alt="" />
             ))}
-          </div>
+          </div> */
         </div>
       ))}
     </div>

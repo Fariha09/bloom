@@ -140,3 +140,211 @@ body {
 .auth-container a:hover {
   text-decoration: underline;
 }
+
+.board-page {
+  padding: 40px;
+}
+
+.board-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.loading,
+.empty-text {
+  text-align: center;
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+/* Image Grid */
+.images-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image-card {
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.image-card img {
+  width: 100%;
+  display: block;
+}
+
+
+.image-card p {
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.boards-page {
+  padding: 20px;
+}
+
+.boards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.board {
+  background: #e0f7e9;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #2f4f2f;
+  font-weight: bold;
+}
+.board-page {
+  padding: 20px;
+}
+
+.board-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.image-card img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.image-card:hover .caption {
+  opacity: 1;
+}
+
+.boards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.board-card {
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.board-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.board-card h3 {
+  text-align: center;
+  padding: 10px;
+}
+
+.board-card img {
+  width: 100%;
+  display: block;
+}
+
+.section-title {
+  width: 100%;
+  margin: 20px 0 10px;
+  font-size: 1.3rem;
+  color: #4d8a68;
+}
+
+.view-all {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  color: #5f9f7a;
+  font-weight: 500;
+}
+
+.static {
+  opacity: 0.85;
+  cursor: default;
+}
+
+.board-page {
+  padding: 30px;
+}
+
+.add-image-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.add-image-form input {
+  flex: 1;
+  padding: 10px;
+}
+
+.add-image-form button {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+/* Pinterest grid */
+.image-grid {
+  column-count: 4;
+  column-gap: 16px;
+}
+
+.image-card {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+.image-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.add-image-form {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.add-image-form input {
+  padding: 8px;
+  border-radius: 6px;
+}
+

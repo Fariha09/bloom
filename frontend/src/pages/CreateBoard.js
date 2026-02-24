@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateBoard() {
   const [title, setTitle] = useState("");
+  const [images, setImages] = useState([]);
   const [imageUrls, setImageUrls] = useState("");
-  const [files, setFiles] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,12 +13,15 @@ function CreateBoard() {
     const formData = new FormData();
     formData.append("title", title);
 
-    if (imageUrls) {
-      formData.append("imageUrls", JSON.stringify(imageUrls.split(",")));
+    // Upload local images
+    for (let i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
     }
 
-    for (let i = 0; i < files.length; i++) {
-      formData.append("images", files[i]);
+    // Add URL images
+    if (imageUrls.trim()) {
+      const urlsArray = imageUrls.split(",").map(url => url.trim());
+      formData.append("imageUrls", JSON.stringify(urlsArray));
     }
 
     try {
@@ -25,24 +30,19 @@ function CreateBoard() {
         body: formData,
       });
 
-      if (res.ok) {
-        alert("Board created!");
-        setTitle("");
-        setImageUrls("");
-        setFiles([]);
-      } else {
-        const data = await res.json();
-        alert(data.error || "Error creating board");
-      }
+      const data = await res.json();
+      console.log(data);
+
+      navigate("/");
     } catch (err) {
       console.error(err);
-      alert("Board creation failed");
     }
   };
 
   return (
-    <div className="auth-container">
+    <div className="create-board">
       <h2>Create Board 🌸</h2>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -51,18 +51,20 @@ function CreateBoard() {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <input
-          type="text"
-          placeholder="Image URLs (comma separated)"
-          value={imageUrls}
-          onChange={(e) => setImageUrls(e.target.value)}
-        />
+
         <input
           type="file"
           multiple
-          onChange={(e) => setFiles(e.target.files)}
+          onChange={(e) => setImages(e.target.files)}
         />
-        <button type="submit">Create Board</button>
+
+        <textarea
+          placeholder="Paste image URLs separated by commas"
+          value={imageUrls}
+          onChange={(e) => setImageUrls(e.target.value)}
+        />
+
+        <button type="submit">Create</button>
       </form>
     </div>
   );
