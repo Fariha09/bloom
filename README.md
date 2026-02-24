@@ -3,41 +3,57 @@
 
 # 🌸 Bloom
 
-Bloom is a full-stack inspiration board web application inspired by Pinterest, built with a nature-themed design using Forest Green and Light Beige aesthetics.
+Bloom is a full-stack inspiration board web application that enables users to create, organize, and manage visual idea boards. The platform allows authenticated users to upload images, group them into boards, and manage content through a responsive and structured interface.
+
+This project is built as a full-stack portfolio application to demonstrate RESTful API development, authentication workflows, database modeling, and frontend-backend integration.
+
+---
 
 ## Features
-- User authentication (login/signup)
-- Create and manage boards
-- Save and organize image pins
-- Pinterest-style layout
-- Responsive design
+
+- User authentication using JSON Web Tokens (JWT)
+- Create, update, and delete boards
+- Upload and manage image pins
+- Associate pins with specific boards
+- RESTful API architecture
+- Responsive design for multiple screen sizes
+- Full CRUD operations across core resources
+
+---
 
 ## Tech Stack
-**Frontend:**  
-React
 
-JavaScript
+### Frontend
+- React
+- React Router
+- JavaScript (ES6+)
+- CSS
+- Axios / Fetch API
 
-CSS (Custom Styling)
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Multer (file upload handling)
+- JSON Web Tokens (JWT)
 
-React Router 
+---
 
-**Backend:**  
-Node.js
+## Project Structure
+bloom/
+├── frontend/ # React client application
+├── backend/ # Express server and database logic
+├── .gitignore
+├── package.json
+└── README.md
 
-Express.js
+---
 
-MongoDB
+## Installation and Setup
 
-Mongoose
+### 1. Clone the Repository
 
-Multer (File Upload Handling) 
-
-## Color Palette
-- Forest Green: #2E6F40  
-- Light Beige: #F5F0E6  
-- Deep Green Text: #1F3D2B  
-- Accent Sage: #9FCFB5  
-
-## Project Status
-Phase 1 – Planning & Setup
+```bash
+git clone https://github.com/Fariha09/bloom.git
+cd bloom
